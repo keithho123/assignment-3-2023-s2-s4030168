@@ -8,7 +8,7 @@ public class Controller {
     public Controller(){}
 
     /**
-     * Function to publish a new course
+     * Method to publish a new course
      *
      * @return String containing username and password
      */
@@ -21,7 +21,7 @@ public class Controller {
     }
 
     /**
-     * Function to get the course information required
+     * Method to get the course information required
      *
      * @return String appending all information
      */
@@ -34,14 +34,14 @@ public class Controller {
     }
 
     /**
-     * Function to print error message when payment of fee isn't successful
+     * Method to print error message when payment of fee isn't successful
      */
     public void invalidPaymentError(){
         System.out.println("ERROR. Invalid payment. Operation Cancelled");
     }
 
     /**
-     * Function to create a new course.
+     * Method to create a new course.
      *
      * @param user who wants to create course (might be an instructor or not)
      * @return User after creating course (Instructor if not failure)
