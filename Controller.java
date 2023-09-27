@@ -10,31 +10,29 @@ public class Controller {
     /**
      * Method to publish a new course
      *
-     * @return String containing username and password
+     * @param course Course to be published
+     * @return String containing username and password (new instructor credentials)
      */
     public String publishCourse(Course course){
         String credentials = "";
-        // Publishes the course to the webpage
-        // Generates new credentials
-
+        // Publishes the course to the webpage (missing implementation)
+        // Generate new credentials (missing implementation)
         return credentials;
     }
 
     /**
-     * Method to get the course information required
+     * Method to get the required course information
      *
      * @return String appending all information
      */
     public String enterCourseInfo(){
         String info = "";
-
-        // Prompt user to enter information + append to info
-
+        // Prompt user to enter information and append it (missing implementation)
         return info;
     }
 
     /**
-     * Method to print error message when payment of fee isn't successful
+     * Method to print error message when payment of fee is unsuccessful
      */
     public void invalidPaymentError(){
         System.out.println("ERROR. Invalid payment. Operation Cancelled");
@@ -44,13 +42,13 @@ public class Controller {
      * Method to create a new course.
      *
      * @param user who wants to create course (might be an instructor or not)
-     * @return User after creating course (Instructor if not failure)
+     * @return User after creating course (Instructor if not failure and not logged-in)
      */
     public User createCourse(User user){
         // Get necessary information
         String courseInfo = enterCourseInfo();
 
-        // Split course info in corresponding attributes
+        // Split courseInfo in corresponding attributes (missing implementation)
         String title = "";
         Instructor instructor = new Instructor();
         String category = "";
@@ -62,7 +60,7 @@ public class Controller {
         // Refund option
         boolean refund = false;
         float amount = 0;
-        // Prompt user to allow refund
+        // Prompt user to allow refund (missing implementation)
         if (refund){
             course.allowRefund(amount);
         }
@@ -75,15 +73,19 @@ public class Controller {
         if (success){
             // Publish course and obtain credentials
             String credentials = publishCourse(course);
-            // General user (not logged in instructor)
+            // If general user (not logged-in instructor)
             if (!(user instanceof Instructor)){
-                // Return instructor
+                // Create and return new instructor (with the obtained credentials)
                 return new Instructor(user, credentials);
             }
         }
-        // If already an instructor / unsuccessful payment, return original uer
-        return user;
+        // Invalid payment and course publish cancelled
+        else{
+            invalidPaymentError();
+        }
 
+        // Return original uer (if already an instructor / unsuccessful payment)
+        return user;
     }
 }
 

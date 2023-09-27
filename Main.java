@@ -10,7 +10,7 @@ public class Main {
         User user = new User();
 
         // Attempt to create a course
-        // newUser might be the same as user or a new Instructor (if the creation was successful)
+        // newUser might be the same as old user or a new Instructor (if the creation was successful)
         User newUser = c.createCourse(user);
 
     }
