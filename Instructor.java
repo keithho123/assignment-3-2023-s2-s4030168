@@ -1,3 +1,6 @@
+/**
+ * Instructor class (extending from User as it inherits from the User class)
+ */
 public class Instructor extends User{
     private String email;
     private String password;

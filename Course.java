@@ -1,5 +1,5 @@
 /**
- * Course class
+ * Course class to hold course's information
  */
 public class Course {
     private String title;
