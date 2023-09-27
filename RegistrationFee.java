@@ -51,6 +51,19 @@ public class RegistrationFee {
      * @return boolean indicating if payment was successful
      */
     public boolean pay(float fee, User user){
+        // Get all payment information
+        String paymentMethod = selectPaymentMethod();
+        String credentials = getPaymentInfo();
 
+        // Attempt payment
+        boolean success = verifyPayment(credentials, paymentMethod, fee);
+
+        // Send invoice if valid payment
+        if(success){
+            Invoice invoice = new Invoice(credentials, fee);
+            sendInvoice(invoice, user);
+        }
+
+        return success;
     }
 }
