@@ -47,7 +47,43 @@ public class Controller {
      * @return User after creating course (Instructor if not failure)
      */
     public User createCourse(User user){
-        return new User();
+        // Get necessary information
+        String courseInfo = enterCourseInfo();
+
+        // Split course info in corresponding attributes
+        String title = "";
+        Instructor instructor = new Instructor();
+        String category = "";
+        float fee = 0;
+
+        // Create course object
+        Course course = new Course(title, instructor, category, fee);
+
+        // Refund option
+        boolean refund = false;
+        float amount = 0;
+        // Prompt user to allow refund
+        if (refund){
+            course.allowRefund(amount);
+        }
+
+        // Proceed to payment
+        RegistrationFee rf = new RegistrationFee();
+        boolean success = rf.pay(fee, user);
+
+        // Valid payment
+        if (success){
+            // Publish course and obtain credentials
+            String credentials = publishCourse(course);
+            // General user (not logged in instructor)
+            if (!(user instanceof Instructor)){
+                // Return instructor
+                return new Instructor(user, credentials);
+            }
+        }
+        // If already an instructor / unsuccessful payment, return original uer
+        return user;
+
     }
 }
 
