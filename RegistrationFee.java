@@ -13,7 +13,21 @@ public class RegistrationFee {
      */
     public void sendInvoice(Invoice invoice, User user){
        // Send invoice to user's email (missing implementation)
+       System.out.println("Invoice sent to " + user.getEmail());
+    
+
     }
+    /**
+     * Function to select payment method
+     *
+     * @return String indicating desired payment method
+     */
+    public String selectPaymentMethod(){
+        // Simulating user selecting a payment method
+        System.out.println("User selects a payment method.");
+        return "CreditCard";
+    }
+
 
     /**
      * Method to actually pay the fee
@@ -24,7 +38,8 @@ public class RegistrationFee {
      * @return boolean indicating if payment was successful
      */
     public boolean verifyPayment(String credentials, String paymentMethod, float fee){
-        boolean success = false;
+        boolean success = Math.random() < 0.9;
+        System.out.println(success ? "Payment successful." : "Payment failed.");
         // Attempt to charge designated amount (missing implementation)
         return success;
     }
@@ -37,19 +52,12 @@ public class RegistrationFee {
     public String getPaymentInfo(){
         String info = "";
         // Prompt user to enter information (missing implementation)
-        return info;
+        System.out.println("User provides payment information.");
+        return "SamplePaymentCredentials";
+        
     }
 
-    /**
-     * Function to select payment method
-     *
-     * @return String indicating desired payment method
-     */
-    public String selectPaymentMethod(){
-        String paymentMethod = "";
-        // Prompt user to decide payment (missing implementation)
-        return paymentMethod;
-    }
+
 
     /**
      * Method to publish a new course
@@ -74,4 +82,12 @@ public class RegistrationFee {
 
         return success;
     }
+    
+
+
+
+
+
 }
+
+

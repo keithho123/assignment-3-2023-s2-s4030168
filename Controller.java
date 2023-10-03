@@ -4,8 +4,14 @@
 public class Controller {
     /**
      * Empty constructor
+     * 
      */
-    public Controller(){}
+    private Manager manager; 
+    
+    public Controller(){
+        this.manager = new Manager();
+    }
+
 
     /**
      * Method to publish a new course
@@ -87,5 +93,99 @@ public class Controller {
         // Return original uer (if already an instructor / unsuccessful payment)
         return user;
     }
+
+
+    /**
+ * Method for an instructor to register a course on the learning portal/website.
+ * 
+ * @param instructor The instructor registering the course.
+ * @param courseDetails The details of the course being registered.
+ * @return boolean indicating whether the registration was successful or not.
+ */
+public boolean registerInstructorCourse(Instructor instructor, String courseDetails) {
+    // Here, we'll simulate the process of registering a course by an instructor.
+    
+    // Print the instructor's action
+    System.out.println("Instructor " + instructor.getEmail() + " is registering a new course with details: " + courseDetails);
+    
+    // For this simulation, we'll assume the registration always succeeds.
+    System.out.println("Course registered successfully!");
+    return true;  // Indicate successful registration
 }
+    // New method to lodge a general enquiry
+    public String lodgeEnquiry(User user, String enquiryDetails) {
+        System.out.println(user.getEmail() + " has lodged an enquiry with details: " + enquiryDetails);
+        System.out.println("Enquiry forwarded to the manager.");
+        String managerResponse = "Thank you for your enquiry. We'll address it shortly.";
+        System.out.println("Manager responds: " + managerResponse);
+        return managerResponse;
+    }
+
+
+
+    /**
+ * Method for a user to lodge a general enquiry about the portal.
+ * 
+ * @param user The user lodging the enquiry.
+ * @param enquiryDetails The details of the enquiry.
+ * @return String indicating the manager's response to the enquiry.
+ */
+    public String lodgeGeneralEnquiry(User user, String enquiryDetails) {
+        // Simulate the process of lodging an enquiry by a user.
+        
+        // Print the user's action
+        System.out.println(user.getEmail() + " has lodged an enquiry with details: " + enquiryDetails);
+
+        // Simulate sending a notification to the manager
+        System.out.println("Notification sent to the manager regarding the enquiry.");
+
+        // Simulate manager's response
+        String managerResponse = "Thank you for your enquiry. We'll address it shortly.";
+        System.out.println("Manager responds: " + managerResponse);
+        
+        return managerResponse;
+    }
+
+    public String promptForCourseDetails() {
+        // For simplicity, we'll just simulate this action with a print statement
+        System.out.println("System prompts for course details.");
+
+        // Simulated course details (this would be obtained from the instructor in a real scenario)
+        return "Sample Course Details";
+    }
+
+    public boolean initiateCourseRegistration(Instructor instructor) {
+        System.out.println("Instructor " + instructor.getEmail() + " initiates course registration.");
+        
+        // System prompts for and collects course details
+        String courseDetails = promptForCourseDetails();
+
+        // For now, we'll just print out the details and return true to indicate success
+        
+        System.out.println("Instructor provides course details: " 
+        + courseDetails);
+        // Handle payment using the RegistrationFee class
+        RegistrationFee rf = new RegistrationFee();
+        float feeAmount = 100.0f;  // Example fee amount, this could be extracted from course details
+        boolean paymentSuccess = rf.pay(feeAmount, instructor);
+
+        if (paymentSuccess) {
+            System.out.println("Payment successful. Proceeding to course registration.");
+            // Further steps for course registration go here...
+
+            return true;
+        } else {
+            System.out.println("Payment failed. Course registration unsuccessful.");
+            return false;
+        }
+        
+    }
+
+
+
+}
+
+
+
+
 

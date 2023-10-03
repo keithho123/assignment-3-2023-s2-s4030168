@@ -21,7 +21,7 @@ public class Course {
         this.instructor = instructor;
         this.category = category;
         this.fee = fee;
-        refund = 0;
+        this.refund = 0;
     }
 
     /**
@@ -29,6 +29,38 @@ public class Course {
      *
      */
     public void allowRefund(float amount){
-        refund = amount;
+        if (amount <= fee) {
+            this.refund = amount;
+        } else {
+            System.out.println("Invalid refund amount. It should be less than or equal to the course fee.");
+        }
     }
+
+    public String getTitle() {
+        return this.title;
+
+    }
+
+    public Instructor getInstructor() {
+        return this.instructor;
+    }
+
+    public float getFee() {
+        return this.fee;
+    }
+    
+    public String getCategory() {
+        return this.category;
+    }
+
+    public float getRefund() {
+        return this.refund;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+
+    
 }
